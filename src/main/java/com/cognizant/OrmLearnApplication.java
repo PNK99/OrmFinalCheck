@@ -1,4 +1,4 @@
-package com.cognizant.ormlearn;
+package com.cognizant;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication
 @ComponentScan(basePackages="com.cognizant")
 @EntityScan("com.cognizant")
-@EnableJpaRepositories("com.cognizant.repositories")
+@EnableJpaRepositories("com.cognizant")
 public class OrmLearnApplication {
 
 	public static void main(String[] args) {
