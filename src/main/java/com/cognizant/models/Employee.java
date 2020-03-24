@@ -36,7 +36,7 @@ public class Employee {
 	@Column(name = "em_date_of_birth")
 	private Date dateOfBirth;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany
 	@JoinTable(name = "employee_skill", joinColumns = { @JoinColumn(name = "es_em_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "es_sk_id") })
 	private Set<Skill> skillList = new HashSet<Skill>();
