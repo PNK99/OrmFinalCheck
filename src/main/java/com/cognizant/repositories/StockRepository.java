@@ -13,7 +13,7 @@ import com.cognizant.models.Stock;
 @Repository
 public interface StockRepository extends JpaRepository<Stock, Integer> {
 
-	@Query("SELECT s FROM Stock s  WHERE s.date <= '2019-09-31' AND s.date >= '2012-09-01'")
+	@Query("SELECT s FROM Stock s  WHERE MONTH(s.date) = 9 AND YEAR(s.date) = 2019")
 	public List<Stock> getSeptemberStocks();
 	
 	@Query("SELECT s FROM Stock s WHERE s.code = 'GOOGL' AND s.close > 1250")
