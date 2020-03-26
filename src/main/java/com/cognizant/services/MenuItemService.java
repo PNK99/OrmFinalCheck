@@ -1,5 +1,6 @@
 package com.cognizant.services;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,8 @@ public class MenuItemService  {
 	}
 	
 	public List<MenuItem> getMenuItemListCustomer(){
-		return menuRepo.findAll();
+		Date today = new Date();
+		return menuRepo.getMenuItemListCustomer(today);
 	}
 	
 	public MenuItem getMenuItem(long id) {

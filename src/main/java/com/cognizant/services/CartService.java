@@ -12,7 +12,6 @@ import com.cognizant.repositories.CartRepository;
 import com.cognizant.repositories.MenuItemRepository;
 import com.cognizant.repositories.UserRepository;
 
-
 @Service
 public class CartService {
 	@Autowired
@@ -27,29 +26,29 @@ public class CartService {
 	public void addCartItem(long userId, long menuItemId) {
 		User user = userRepo.findById(userId).get();
 		Cart cart = user.getCart();
-		
-		MenuItem menu  = menuRepo.findById(menuItemId).get();
-		
+
+		MenuItem menu = menuRepo.findById(menuItemId).get();
+
 		cart.getMenuItemList().add(menu);
-		
+		cart.setTotal(cart.getTotal() + menu.getPrice());
 		cartRepo.save(cart);
 	}
 
 	public List<MenuItem> getAllCartItems(long userId) {
 		User user = userRepo.findById(userId).get();
 		Cart cart = user.getCart();
-		
+
 		return cart.getMenuItemList();
 	}
 
 	public void removeCartItem(long userId, long menuItemId) {
 		User user = userRepo.findById(userId).get();
 		Cart cart = user.getCart();
-		
-		MenuItem menu  = menuRepo.findById(menuItemId).get();
-		
+
+		MenuItem menu = menuRepo.findById(menuItemId).get();
+
 		cart.getMenuItemList().remove(menu);
-		
+		cart.setTotal(cart.getTotal() - menu.getPrice());
 		cartRepo.save(cart);
 	}
 }
