@@ -2,8 +2,8 @@ package com.cognizant.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.cognizant.models.Skill;
+import com.cognizant.models.Cart;
 
-public interface SkillRepository extends JpaRepository<Skill, Integer> {
+public interface CartRepository extends JpaRepository<Cart	, Long> {
 
 }
