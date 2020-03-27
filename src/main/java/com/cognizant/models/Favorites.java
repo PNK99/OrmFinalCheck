@@ -13,22 +13,12 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Cart {
+public class Favorites {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
-	@ManyToMany
-	@JoinTable(name = "cart_menu_items", joinColumns = @JoinColumn(name = "cart_id"), inverseJoinColumns = @JoinColumn(name = "menu_item_id"))
-	private List<MenuItem> menuItemList = new ArrayList<MenuItem>();
 	
-	
-	@OneToOne
-	private User user;
-
-	private double total = 0;
-
-
 	public Long getId() {
 		return id;
 	}
@@ -45,25 +35,35 @@ public class Cart {
 		this.user = user;
 	}
 
-	public List<MenuItem> getMenuItemList() {
-		return menuItemList;
+	private long noOfFavorites = 0;
+
+	@ManyToMany
+	@JoinTable(name = "favourite_movies", joinColumns = @JoinColumn(name = "favourite_id"), inverseJoinColumns = @JoinColumn(name = "movie_id"))
+	private List<Movie> movieList = new ArrayList<Movie>();
+	
+	
+	@OneToOne
+	private User user;
+	
+	public List<Movie> getMovieList() {
+		return movieList;
 	}
 
-	public void setMenuItemList(List<MenuItem> menuItemList) {
-		this.menuItemList = menuItemList;
+	public void setMovieList(List<Movie> movieList) {
+		this.movieList = movieList;
 	}
 
-	public double getTotal() {
-		return total;
+	public long getNoOfFavorites() {
+		return noOfFavorites;
 	}
 
-	public void setTotal(double total) {
-		this.total = total;
+	public void setNoOfFavorites(long noOfFavorites) {
+		this.noOfFavorites = noOfFavorites;
 	}
 
 	@Override
 	public String toString() {
-		return "Cart [menuItemList=" + menuItemList + ", total=" + total + "]";
+		return "Favorites [movieList=" + movieList + ", noOfFavorites=" + noOfFavorites + "]";
 	}
 
 }

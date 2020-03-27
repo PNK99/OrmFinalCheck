@@ -8,22 +8,29 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class MenuItem {
+public class Movie {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	
-	private String name;
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	private String title;
 	
-	private float price;
+	private String boxOffice;
 	
 	private boolean active;
 	
 	private Date dateOfLaunch;
 	
-	private String category;
+	private String genre;
 	
-	private boolean freeDelivery;
+	private boolean hasTeaser;
+	
+
 
 
 	public long getId() {
@@ -34,20 +41,20 @@ public class MenuItem {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
-	public float getPrice() {
-		return price;
+	public String getBoxOffice() {
+		return boxOffice;
 	}
 
-	public void setPrice(float price) {
-		this.price = price;
+	public void setBoxOffice(String boxOffice) {
+		this.boxOffice = boxOffice;
 	}
 
 	public boolean isActive() {
@@ -66,27 +73,26 @@ public class MenuItem {
 		this.dateOfLaunch = dateOfLaunch;
 	}
 
-	public String getCategory() {
-		return category;
+	public String getGenre() {
+		return genre;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public void setGenre(String genre) {
+		this.genre = genre;
 	}
 
-	public boolean isFreeDelivery() {
-		return freeDelivery;
+	public boolean isHasTeaser() {
+		return hasTeaser;
 	}
 
-	public void setFreeDelivery(boolean freeDelivery) {
-		this.freeDelivery = freeDelivery;
+	public void setHasTeaser(boolean hasTeaser) {
+		this.hasTeaser = hasTeaser;
 	}
 
 	@Override
 	public String toString() {
-		return "Id = " + id + "\nName = " + name + "\nPrice = " + price + "\nActive = " + active +
-				"\nDate Of Launch = " + dateOfLaunch + "\nCategory = " + category + 
-				"\nFree Delivery = " + freeDelivery + "\n***************************************";
+		return String.format("%-3d %-20s %-15s %-8b %-30s %-18s %-15b", id, title, boxOffice,
+				active, dateOfLaunch, genre, hasTeaser);
 	}
 
 	@Override
@@ -105,7 +111,7 @@ public class MenuItem {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		MenuItem other = (MenuItem) obj;
+		Movie other = (Movie) obj;
 		if (id != other.id)
 			return false;
 		return true;

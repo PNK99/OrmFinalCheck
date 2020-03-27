@@ -1,3 +1,4 @@
+  
 package com.cognizant.models;
 
 import javax.persistence.Entity;
@@ -14,15 +15,16 @@ public class User {
 	private Long id;
 	
 	@OneToOne(mappedBy = "user")
-	private Cart cart = new Cart();
+	private Favorites favourites = new Favorites();
 	
 
-	public Cart getCart() {
-		return cart;
+
+	public Favorites getFavourites() {
+		return favourites;
 	}
 
-	public void setCart(Cart cart) {
-		this.cart = cart;
+	public void setFavourites(Favorites favourites) {
+		this.favourites = favourites;
 	}
 
 	public Long getId() {
